@@ -81,6 +81,16 @@
 
   <script>
     function startScare() {
+      const elem = document.documentElement;
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => {});
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+
       document.getElementById('overlay').style.display = 'none';
       const scare = document.getElementById('scare');
       const audio = document.getElementById('scream');
